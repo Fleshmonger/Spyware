@@ -7,7 +7,7 @@ public class House : Building
     public Service emergency;
     public SpriteRenderer sign;
 
-    public void Awake()
+    public void Start()
     {
         SetEmergency(emergency);
     }
