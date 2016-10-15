@@ -18,9 +18,10 @@ public class Vehicle : MonoBehaviour
         if (direction.magnitude < distance)
         {
             transform.position = target.transform.position;
-            Node oldTarget = target;
+            Node destination = target;
             target = target.GetTarget(from);
-            from = oldTarget;
+            from = destination;
+            destination.Arrive(this);
             Move(distance - direction.magnitude);
         }
         else
