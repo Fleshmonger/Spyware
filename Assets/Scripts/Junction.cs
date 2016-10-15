@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Junction : MonoBehaviour
+public class Junction : Node
 {
     private int targetIndex = 0;
 
-    public Junction[] connections;
+    public Node[] connections;
 
-    public Junction Target
+    private Node Target
     {
         get
         {
@@ -32,5 +32,10 @@ public class Junction : MonoBehaviour
         Quaternion quaternion = new Quaternion();
         quaternion.SetLookRotation(Target.transform.position - transform.position, Vector3.up);
         transform.rotation = quaternion;
+    }
+
+    override public Node GetTarget(Node from)
+    {
+        return Target;
     }
 }

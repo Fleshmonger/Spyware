@@ -4,7 +4,7 @@ using System.Collections;
 public class Vehicle : MonoBehaviour
 {
     public float speed = 10f;
-    public Junction target, from;
+    public Node target, from;
     public Service service;
 
     public void Update()
@@ -18,8 +18,9 @@ public class Vehicle : MonoBehaviour
         if (direction.magnitude < distance)
         {
             transform.position = target.transform.position;
-            from = target;
-            target = target.Target;
+            Node oldTarget = target;
+            target = target.GetTarget(from);
+            from = oldTarget;
             Move(distance - direction.magnitude);
         }
         else
@@ -33,7 +34,7 @@ public class Vehicle : MonoBehaviour
 
     public void Flip()
     {
-        Junction junction = target;
+        Node junction = target;
         target = from;
         from = junction;
     }
