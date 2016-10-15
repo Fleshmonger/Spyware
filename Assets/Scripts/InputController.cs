@@ -9,18 +9,19 @@ public class InputController : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            Debug.Log("Raycast thrown...");
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("Hit!");
                 GameObject target = hit.collider.gameObject;
                 Junction junction = target.GetComponentInParent<Junction>();
                 if (junction)
                 {
-                    Debug.Log("Junction!");
                     junction.Turn();
                 }
             }
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 }
