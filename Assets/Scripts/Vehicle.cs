@@ -3,42 +3,10 @@ using System.Collections;
 
 public class Vehicle : MonoBehaviour
 {
-    /*
-    private Vector3[] directionVectors = {
-                                             Vector3.left,
-                                             Vector3.right,
-                                             Vector3.down,
-                                             Vector3.up
-                                         };
-    */
-    public enum ServiceType
-    {
-        PUBLIC,
-        HEALTH,
-        FIRE,
-        POLICE,
-        SCHOOL
-    }
-    /*
-    public enum Direction
-    {
-        LEFT,
-        RIGHT,
-        DOWN,
-        UP
-    };
-    */
-
     public float speed = 10f;
     public Junction target, from;
-    public ServiceType serviceType;
+    public Service service;
 
-    /*
-    private Vector3 DirectionVector(Direction direction)
-    {
-        return directionVectors[(int)direction];
-    }
-    */
     public void Update()
     {
         Move(speed * Time.deltaTime);
